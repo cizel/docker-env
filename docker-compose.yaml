@@ -14,7 +14,7 @@ services:
             - ./common/php/php-fpm.d:/apps/srv/php56/etc/php-fpm.d
             - ./common/nginx/nginx.conf:/apps/srv/nginx/conf/nginx.conf
             - ./common/nginx/conf.d:/apps/srv/nginx/conf/conf.d
-            - ./common//nginx/ssl:/apps/srv/nginx/ssl
+            - ./common/nginx/ssl:/apps/srv/nginx/ssl
             #- ./common/hosts/hosts:/etc/hosts
             #- ./common/run.sh:/run.sh
 
@@ -32,5 +32,3 @@ services:
         container_name: baijiacloud
 
         command: ["/usr/bin/supervisord", "-n"]
-        
-
