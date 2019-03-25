@@ -1,0 +1,36 @@
+version: '2'
+# 定义四个服务nginx,php,mysql,redis
+services:
+    baijiacloud:
+        image: docker-env:test
+        # 这样使nginx容器把网站文件和目录存放到主机目录中，持久化和方便管理
+        volumes:
+            - ./wwwroot:/apps/wwwroot
+            - ./logs:/apps/logs
+            - ./common/supervisor/supervisord.conf:/etc/supervisord.conf
+            - ./common/supervisor/etc:/apps/srv/supervisor/etc
+            - ./common/php/php.ini:/apps/srv/php56/etc/php.ini
+            - ./common/php/php-fpm.conf:/apps/srv/php56/etc/php-fpm.conf
+            - ./common/php/php-fpm.d:/apps/srv/php56/etc/php-fpm.d
+            - ./common/nginx/nginx.conf:/apps/srv/nginx/conf/nginx.conf
+            - ./common/nginx/conf.d:/apps/srv/nginx/conf/conf.d
+            - ./common//nginx/ssl:/apps/srv/nginx/ssl
+            #- ./common/hosts/hosts:/etc/hosts
+            #- ./common/run.sh:/run.sh
+
+
+        # nginx意外退出时自动重启
+        #restart: always
+
+        # 映射80和443端口
+        ports:
+            - "80:80"
+            - "443:443"
+            - "23:22"
+
+        # 容器名称
+        container_name: baijiacloud
+
+        command: ["/usr/bin/supervisord", "-n"]
+        
+
