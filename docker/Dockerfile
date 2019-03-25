@@ -15,7 +15,10 @@ ENV IGBINARY_VERSION 1.2.1
 ENV REDIS_VERSION 4.0.0
 
 # install base tool
-RUN yum update -y \ 
+RUN curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.163.com/.help/CentOS7-Base-163.repo \
+&& yum clean all \ 
+&& yum makecache \
+&& yum update -y \ 
 && yum install -y \
 vim \
 wget \
