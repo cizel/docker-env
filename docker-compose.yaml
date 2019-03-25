@@ -1,8 +1,7 @@
 version: '2'
-# 定义四个服务nginx,php,mysql,redis
 services:
     baijiacloud:
-        image: docker-env:test
+        image: cizel/docker-env:test
         # 这样使nginx容器把网站文件和目录存放到主机目录中，持久化和方便管理
         volumes:
             - ./wwwroot:/apps/wwwroot
