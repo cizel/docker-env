@@ -130,7 +130,7 @@ bzip2-devel \
 && tar -zxvf php-$PHP_VERSION.tar.gz \
 
 # install php: config php
-&& cd /tmp/php-$PHP_VERSIOn \
+&& cd /tmp/php-$PHP_VERSION \
 && ./configure \
     --prefix=$PHP_PREFIX \
     --with-config-file-path=$PHP_PREFIX/etc/ \
