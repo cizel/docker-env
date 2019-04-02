@@ -1,3 +1,5 @@
 <?php
 
-phpinfo();
+//phpinfo();
+
+echo 1;
